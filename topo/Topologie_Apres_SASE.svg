@@ -1,0 +1,75 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='1180' height='790' viewBox='0 0 1180 790'>
+<rect x="0" y="0" width="1180" height="790" fill="#ffffff"/>
+<rect x="0" y="0" width="1180" height="790" rx="0" stroke="#e0e0e0" stroke-width="1" fill="none"/>
+<text x="30" y="20" font-family="Segoe UI, Arial, sans-serif" font-size="16" fill="#222222">Topologie cible avec SASE : Point de Présence (PoP) - laboratoire sase-lab (déploiement VirtualBox + Docker)</text>
+<rect x="550" y="35" width="170" height="60" rx="30" fill="#e3f2fd" stroke="#1e88e5" stroke-width="2"/>
+<text x="562" y="61" font-family="Segoe UI, Arial, sans-serif" font-size="15" fill="#1565c0">WAN public</text>
+<rect x="640" y="125" width="440" height="580" rx="0" fill="#673ab7" stroke="#5e35b1" stroke-width="2"/>
+<text x="646" y="420.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">POINT DE PRÉSENCE SASE (PoP) - VM Ubuntu 24.04 (3 Go RAM, 2 vCPU)</text>
+<text x="655" y="142" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#222222">Pile réseau partagée (pop-gw - nftables / FWaaS, ip_forward=1) – interfaces wg0 / wg-b1 / wg-b2</text>
+<rect x="280" y="155" width="360" height="90" rx="0" fill="#1565c0" stroke="#0d47a1" stroke-width="2"/>
+<text x="286" y="205.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">Home laptop (Windows distant)
+wg0 10.100.0.11</text>
+<rect x="290" y="255" width="350" height="60" rx="0" fill="#2196f3" stroke="#1565c0" stroke-width="2"/>
+<text x="296" y="290.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">Mobile (déplacé)
+wg0 10.100.0.12</text>
+<text x="285" y="316" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">Routes client : AllowedIPs 10.20.0.0/24, 10.100.0.1/32
+DNS : 10.100.0.1 – PersistentKeepalive 25s</text>
+<rect x="660" y="145" width="400" height="42" rx="0" fill="#7b1fa2" stroke="#5e35b1" stroke-width="2"/>
+<text x="670" y="158" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">Pile réseau partagée (pop-gw - nftables / FWaaS, ip_forward=1) – wg0 (10.100.0.1/24) | wg-b1 (172.16.1.1/30) | wg-b2 (172.16.2.1/30) | iperf3 :5201</text>
+<rect x="665" y="195" width="390" height="62" rx="0" fill="#9c27b0" stroke="#5e35b1" stroke-width="2"/>
+<text x="672" y="207" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">svc 10.20.0.0/24 (gw .254) – pop-gw .1 | dns | squid :3128 | pomerium :443 | keycloak :8443</text>
+<text x="672" y="217" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">                            | casb-dlp (127.0.0.1:8081) | grafana .60 | loki .61 | fluent-bit .62 | inet-sim .70</text>
+<text x="672" y="227" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">apps 10.30.0.0/24 (gw .254, INTERNE sans Internet) – pop-gw .1 | CloudDrive .21 | Finance .22 | Admin .23</text>
+<text x="672" y="237" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">wan1 10.10.1.0/24 (gw .254) – pop-gw .1 | branch-edge .2</text>
+<text x="672" y="247" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">wan2 10.10.2.0/24 (gw .254) – pop-gw .1 | branch-edge .2</text>
+<text x="672" y="257" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">branch_lan 192.168.10.0/24 (gw .254) – branch-edge .1 | branch-pc .10</text>
+<rect x="665" y="265" width="390" height="185" rx="0" fill="#9c27b0" stroke="#5e35b1" stroke-width="2"/>
+<text x="672" y="278" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#fff">Services du PoP (réseau svc 10.20.0.0/24)</text>
+<rect x="672" y="305" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="680" y="310" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">dns (dnsmasq, puits DNS, sinkhole)      :53</text>
+<rect x="867" y="305" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="875" y="310" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">squid (SWG - ACL domaines/URL/ext)       :3128</text>
+<rect x="672" y="331" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="680" y="336" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">pomerium (ZTNA clientless)              :443</text>
+<rect x="867" y="331" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="875" y="336" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">keycloak (royaume sase, MFA TOTP)        :8443</text>
+<rect x="672" y="357" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="680" y="362" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">mitmproxy (CASB + DLP reverse-proxy)    :8081</text>
+<rect x="867" y="357" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="875" y="362" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">loki 10.20.0.61                          :3100</text>
+<rect x="672" y="383" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="680" y="388" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">fluent-bit 10.20.0.62                   :24224</text>
+<rect x="867" y="383" width="180" height="22" rx="0" fill="#f5f5f5" stroke="#616161" stroke-width="1"/>
+<text x="875" y="388" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">inet-sim 10.20.0.70 (Internet simulé)   :5000/80</text>
+<rect x="665" y="455" width="390" height="42" rx="0" fill="#455a64" stroke="#455a64" stroke-width="2"/>
+<text x="672" y="468" font-family="Segoe UI, Arial, sans-serif" font-size="11" fill="#fff">FWaaS : table inet sase_fw (deny-by-default) – INPUT/FORWARD/OUTPUT</text>
+<text x="672" y="484" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#fff">INPUT : établissement tunnels (53, 443, 3128, 8443, 5201) ; FORWARD : deny ; OUTPUT : web+DNS ; refus journalés SASE-FW-*</text>
+<rect x="1035" y="290" width="85" height="36" rx="0" fill="#c62828" stroke="#b71c1c" stroke-width="2"/>
+<text x="1041" y="313.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">branch-edge
+(SD-WAN) 192.168.10.1</text>
+<rect x="1035" y="340" width="85" height="36" rx="0" fill="#c62828" stroke="#b71c1c" stroke-width="2"/>
+<text x="1041" y="363.0" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">branch-pc
+192.168.10.10</text>
+<rect x="640" y="560" width="540" height="45" rx="0" fill="#2e7d32" stroke="#1b5e20" stroke-width="2"/>
+<text x="646" y="587.5" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">Applications internes (réseau apps 10.30.0.0/24, INTERNE sans Internet)
+CloudDrive 10.30.0.21 (:5000) | Finance 10.30.0.22 | Admin 10.30.0.23
+FORWARD deny – accès via ZTNA PoP uniquement</text>
+<rect x="640" y="612" width="540" height="45" rx="0" fill="#eceff1" stroke="#1565c0" stroke-width="2"/>
+<text x="646" y="639.5" font-family="Segoe UI, Arial, sans-serif" font-size="13" fill="#222222">Internet simulé (inet.lab → 10.20.0.70) : news.inet.lab (autorisé) | casino.inet.lab, malware.inet.lab, phishing.inet.lab (puits DNS → 0.0.0.0)</text>
+<line x1="1115" y1="308" x2="1085" y2="308" stroke="#333" stroke-width="1" stroke-dasharray="4 2" stroke-linecap="round"/>
+<polygon points="1077.3272793014644,312.70418506037595 1077.3272793014644,303.29581493962405 1091.0,308.0" fill="#333"/>
+<text x="1106.0" y="301.0" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#444444">wg-b1 : UDP 51821</text>
+<line x1="1115" y1="328" x2="1085" y2="328" stroke="#333" stroke-width="1" stroke-dasharray="4 2" stroke-linecap="round"/>
+<polygon points="1077.3272793014644,332.70418506037595 1077.3272793014644,323.29581493962405 1091.0,328.0" fill="#333"/>
+<text x="1106.0" y="321.0" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#444444">wg-b2 : UDP 51822</text>
+<rect x="665" y="530" width="390" height="28" rx="0" fill="#eceff1" stroke="#9e9e9e" stroke-width="1"/>
+<text x="675" y="537" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#222222">Flux : DNS 53 | HTTPS 443 | CONNECT 3128 (Squid) | HTTP 8081 (CASB) | iperf3 5201 | Journaux TCP 24224 / Loki 3100</text>
+<line x1="640" y1="200" x2="662" y2="200" stroke="#333" stroke-width="1" stroke-dasharray="4 2" stroke-linecap="round"/>
+<polygon points="669.6727206985355,195.29581493962408 669.6727206985355,204.70418506037592 656.0,200.0" fill="#333"/>
+<text x="657.0" y="193.0" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#444444">WG utilisateur (51820)</text>
+<line x1="640" y1="320" x2="662" y2="320" stroke="#333" stroke-width="1" stroke-dasharray="4 2" stroke-linecap="round"/>
+<polygon points="669.6727206985355,315.29581493962405 669.6727206985355,324.70418506037595 656.0,320.0" fill="#333"/>
+<text x="657.0" y="313.0" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#444444">WG utilisateur (51820)</text>
+<text x="30" y="100" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#555">IAM/ZTNA/SWG/CASB chain traversée en un seul nœud (Pomerium → Keycloak → Squid → CASB) – Zero Trust par identité</text>
+</svg>
